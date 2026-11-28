@@ -1,0 +1,176 @@
+<title>4개 언어 앱 시안</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700;800&family=Noto+Sans+Thai:wght@400;600;700;800&family=Noto+Sans+Khmer:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: one section per language; PC frame scaled to width, then three phones (light, dark, scrolled with sticky bar). */
+:root{--pg:#EDEFF2;--pg2:#FFFFFF;--fg:#1B2129;--fg2:#5A6470;--rule:#D9DEE4;--chip:#E3E7EC;
+  --fd:'IBM Plex Sans KR','Noto Sans KR',system-ui,sans-serif;--fa:'Noto Sans KR','Noto Sans Thai','Noto Sans Khmer',system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--pg:#111418;--pg2:#1A1F25;--fg:#E6EAEE;--fg2:#9AA4AF;--rule:#2A3139;--chip:#232A32;color-scheme:dark}}
+:root[data-theme="dark"]{--pg:#111418;--pg2:#1A1F25;--fg:#E6EAEE;--fg2:#9AA4AF;--rule:#2A3139;--chip:#232A32;color-scheme:dark}
+body{background:var(--pg);color:var(--fg);font-family:var(--fd);line-height:1.5}
+.page{max-width:1180px;margin:0 auto;padding-block:28px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:36px}
+.top h1{font-size:clamp(24px,4vw,34px);margin:0 0 6px;text-wrap:balance;letter-spacing:-.01em}
+.top p{margin:0;color:var(--fg2);max-width:70ch}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.jump a{display:flex;align-items:center;gap:8px;padding:7px 14px 7px 8px;border-radius:999px;background:var(--pg2);color:var(--fg);text-decoration:none;font-weight:600;font-size:14px;border:1px solid var(--rule)}
+.jump a:focus-visible,.jump a:hover{border-color:var(--fg2)}
+.jump i{width:22px;height:22px;border-radius:50%;display:block}
+.sec{display:flex;flex-direction:column;gap:14px;scroll-margin-top:16px}
+.sechd{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 24px;border-top:1px solid var(--rule);padding-top:20px}
+.sechd h2{margin:0;font-size:22px;letter-spacing:-.01em}
+.sechd h2 small{font-weight:400;color:var(--fg2);font-size:15px;margin-left:8px}
+.sechd p{margin:4px 0 0;color:var(--fg2);font-size:14px;max-width:62ch}
+.sw{display:flex;gap:6px;flex-wrap:wrap}
+.sw span{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10.5px;color:var(--fg2);font-variant-numeric:tabular-nums}
+.sw b{width:34px;height:34px;border-radius:10px;display:block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+.lbl{font-size:12px;font-weight:600;letter-spacing:.06em;color:var(--fg2);margin:0 0 6px}
+.pcwrap{position:relative;overflow:hidden;border-radius:14px}
+.pcin{width:1040px;transform-origin:0 0;position:absolute;left:0;top:0}
+.phones{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-start}
+.phones>div{min-width:0}
+.phone{width:340px;max-width:calc(100vw - 32px);border-radius:34px;padding:10px;background:#0E1013;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.phone .scr{border-radius:26px;overflow:hidden;height:690px;position:relative}
+.browser{background:#0E1013;border-radius:14px;padding:0 0 0;box-shadow:0 10px 30px rgba(0,0,0,.18);overflow:hidden}
+.browser .bar{display:flex;align-items:center;gap:7px;padding:10px 14px;background:#22262B}
+.browser .bar i{width:11px;height:11px;border-radius:50%;background:#4A5058;display:block}
+.browser .bar span{margin-left:14px;flex:1;background:#33383F;color:#AEB6BF;border-radius:8px;padding:4px 12px;font:13px var(--fa)}
+.notes{margin:0;padding-left:18px;color:var(--fg2);font-size:14px;max-width:340px}
+.notes li+li{margin-top:4px}
+
+/* ===== mock app (scoped, own light/dark so frames show both) ===== */
+.app{--sheet:#fff;--ink:#16202A;--muted:#5D6873;--shadow:0 1px 2px rgba(20,30,40,.06),0 10px 30px rgba(20,30,40,.08);
+  background:var(--bg);color:var(--ink);font-family:var(--fa);padding:16px 20px 24px;display:flex;flex-direction:column;gap:6px;min-height:100%}
+.app .hd{position:relative;isolation:isolate;overflow:hidden;border-radius:22px;color:#fff;padding:14px 24px 13px;display:flex;flex-direction:column;gap:6px;
+  background:radial-gradient(120% 150% at 0% 0%,var(--T1) 0%,var(--T2) 48%,var(--T3) 100%)}
+.app .hd::before{content:"";position:absolute;width:230px;height:230px;right:-60px;top:-100px;border-radius:50%;background:radial-gradient(circle,var(--G1a) 0%,var(--G1b) 55%,transparent 70%);opacity:.9;z-index:-1;filter:blur(2px)}
+.app .hd::after{content:"";position:absolute;width:280px;height:280px;right:90px;bottom:-210px;border-radius:50%;background:radial-gradient(circle,var(--G2) 0%,transparent 68%);opacity:.7;z-index:-1}
+.app .eb{font-size:12.5px;font-weight:500;opacity:.9;letter-spacing:.04em}
+.app .ttl{margin:0;font-size:44px;line-height:1.12;font-weight:800;color:var(--Tt);text-shadow:0 2px 10px rgba(0,0,0,.18)}
+.app .tag{font-size:13px;opacity:.92;margin-top:-2px}
+.app .stats{display:flex;gap:6px;margin-top:2px}
+.app .stats span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:2px 10px;font-size:12.5px}
+.app .stats b{font-size:14px;margin-right:3px}
+.app .hart{position:absolute;right:120px;bottom:0;height:90%;width:44%;color:var(--Ta);opacity:.66;z-index:-1;-webkit-mask-image:linear-gradient(90deg,transparent,#000 35%);mask-image:linear-gradient(90deg,transparent,#000 35%)}
+.app .srch{margin:0 6px;display:flex;justify-content:center;align-items:center;gap:8px;border-bottom:1.5px solid var(--a2);padding:5px 34px 6px;color:var(--muted);font-size:13.5px;position:relative}
+.app .srch svg{position:absolute;left:8px;width:15px;height:15px}
+.app .mb{background:var(--sheet);border-radius:20px;padding:10px 14px 9px;display:flex;flex-direction:column;gap:7px;box-shadow:var(--shadow)}
+.app .gw{display:flex;align-items:center;gap:6px}
+.app .arr{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--sheet);color:var(--acc);box-shadow:0 1px 4px rgba(0,0,0,.18);font-size:15px;line-height:1}
+.app .arr.off{opacity:.35}
+.app .gr{flex:1;min-width:0;display:flex;background:var(--bg);border-radius:999px;padding:4px;overflow:hidden;white-space:nowrap}
+.app .g{position:relative;padding:7px 14px;border-radius:999px;color:var(--muted);font-size:15px;font-weight:500}
+.app .g.on{background:var(--a1);color:#fff;font-weight:700}
+.app.dk .g.on{background:var(--dpill)}
+.app .g.hv{color:var(--ink)}
+.app .g.hv::after{content:"";position:absolute;left:14px;right:14px;bottom:3px;height:2px;border-radius:2px;background:var(--a2)}
+.app .g.sep{margin-left:9px}
+.app .g.sep::before{content:"";position:absolute;left:-5px;top:50%;width:1px;height:16px;transform:translateY(-50%);background:var(--line2)}
+.app .g small{font-size:11px;opacity:.7;margin-left:3px}
+.app .subs{display:flex;gap:6px;padding:2px 4px 4px;overflow:hidden;white-space:nowrap;-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent)}
+.app .sb{border:1px solid var(--line2);border-radius:12px;padding:5px 12px;font-size:14.5px;background:var(--sheet)}
+.app .sb em{font-style:normal;color:var(--a2c);margin-right:5px;font-weight:600}
+.app .sb.on{background:var(--soft);border-color:var(--a2);font-weight:700}
+.app .si{padding:0 4px;font-size:12.5px;color:var(--muted)}
+.app .sheet{background:var(--sheet);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}
+.app .band{padding:16px 22px 14px;background:linear-gradient(180deg,var(--tint),var(--sheet));display:flex;flex-direction:column;gap:10px}
+.app .big{align-self:stretch;text-align:center;border-radius:999px;padding:8px 16px;background:linear-gradient(90deg,var(--a1),var(--a2));color:#fff;font-weight:700;font-size:15.5px;box-shadow:0 4px 12px rgba(0,0,0,.12);position:relative}
+.app .big::after{content:"▾";position:absolute;right:16px;opacity:.85}
+.app .br{display:grid;grid-template-columns:minmax(0,1fr) 168px;gap:14px;align-items:start}
+.app .intro{margin:0 0 8px;font-size:13px;line-height:1.6}
+.app .tips{background:var(--tint);border-radius:14px;padding:9px 14px;font-size:12.5px;line-height:1.65;margin:0;list-style:none;display:flex;flex-direction:column;gap:3px}
+.app .tips li::before{content:"• ";color:var(--acc)}
+.app .tips b{color:var(--acc);font-weight:700}
+.app .pic{border-radius:14px;overflow:hidden;line-height:0;box-shadow:0 0 0 1px var(--line)}
+.app .pic svg{width:100%;height:auto;display:block}
+.app.dk .pic svg{filter:brightness(.86) saturate(.95)}
+.app .ctl{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding:12px 16px;border-top:1px solid var(--line)}
+.app .seg{display:flex;background:var(--bg);border-radius:999px;padding:3px}
+.app .seg span{padding:6px 14px;border-radius:999px;font-size:13.5px;color:var(--muted)}
+.app .seg span.on{background:var(--sheet);color:var(--acc);font-weight:700;box-shadow:0 1px 3px rgba(0,0,0,.18)}
+.app .pl{border:1px solid var(--line2);border-radius:999px;padding:6px 14px;font-size:13.5px;color:var(--acc);font-weight:600}
+.app .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:2px 16px 16px}
+.app .ent{border:1px solid var(--line);border-radius:16px;padding:12px 14px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:center;background:var(--sheet)}
+.app .ent .n{font-size:19px;font-weight:700;color:var(--ink)}
+.app .ent .r{font-size:12.5px;color:var(--acc)}
+.app .ent .k{font-size:13px;color:var(--muted);grid-column:1}
+.app .spk{grid-row:1/4;grid-column:2;width:34px;height:34px;border-radius:50%;background:var(--a1);color:#fff;display:grid;place-items:center}
+.app.dk .spk{background:var(--dpill)}
+.app .spk svg{width:15px;height:15px}
+/* phone */
+.app.ph{padding:10px 10px 18px;gap:6px}
+.app.ph .hd{padding:11px 16px 12px;border-radius:18px;gap:2px}
+.app.ph .eb{font-size:11.5px}
+.app.ph .ttl{font-size:27px}
+.app.ph .tag{font-size:11.5px;margin-top:0}
+.app.ph .stats{display:none}
+.app.ph .hd::before{width:150px;height:150px;right:-46px;top:-78px}
+.app.ph .hd::after{width:170px;height:170px;right:40px;bottom:-130px;opacity:.55}
+.app.ph .hart{right:6px;width:58%;height:92%;opacity:.62;-webkit-mask-image:linear-gradient(90deg,transparent,#000 40%);mask-image:linear-gradient(90deg,transparent,#000 40%)}
+.app.ph .mb{padding:6px 8px;gap:5px;border-radius:16px}
+.app.ph .arr{display:none}
+.app.ph .gr{-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}
+.app.ph .g{padding:6px 12px;font-size:14px}
+.app.ph .g small{display:none}
+.app.ph .sb{padding:4px 10px;font-size:13.5px}
+.app.ph .band{padding:12px 12px 12px}
+.app.ph .big{font-size:14px;padding:7px 30px 7px 12px}
+.app.ph .br{grid-template-columns:minmax(0,1fr) 104px;gap:10px}
+.app.ph .intro{font-size:12.5px}
+.app.ph .tips{grid-column:1/-1;font-size:12px;padding:8px 11px}
+.app.ph .ctl{padding:10px 8px;gap:8px}
+.app.ph .seg span{padding:5px 10px;font-size:12.5px}
+.app.ph .cards{grid-template-columns:1fr;padding:2px 10px 12px}
+.app.ph .ent .n{font-size:17px}
+/* scrolled state: sticky menu */
+.app.st .stick{position:sticky;top:0;z-index:3;padding-top:8px;margin-top:-8px;background:linear-gradient(var(--bg) 70%,transparent)}
+.app.st .stick .mb{box-shadow:0 6px 18px rgba(0,0,0,.14)}
+.stnote{position:absolute;right:10px;bottom:12px;z-index:4;font:600 11px var(--fd);background:rgba(14,16,19,.78);color:#fff;border-radius:999px;padding:4px 10px}
+@media (prefers-reduced-motion:no-preference){.jump a{transition:border-color .15s}}
+</style>
+<main class="page">
+  <section class="top">
+    <h1>태국어 · 르완다어 · 캄보디아어 · 스와힐리어 앱 시안</h1>
+    <p>라오스어 앱 v3.34와 같은 틀(그라데이션 제목 띠와 흰 선 그림, 한 줄 소개, 밑줄 검색, 흰 메뉴 상자와 둥근 대분류, PC 좌우 화살표, 스크롤하면 붙는 메뉴, 소분류 그림)에 나라마다 다른 색과 그림을 입혔어요. 아직 앱에는 적용하지 않았어요.</p>
+    <nav class="jump" id="jump"></nav>
+  </section>
+  <div id="secs"></div>
+</main>
+<script>
+const D = __DATA__;
+const ICON_S='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>';
+const ICON_P='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 8.5a5 5 0 0 1 0 7" stroke="currentColor" stroke-width="2" fill="none"/></svg>';
+function vars(a,dk){const c=Object.assign({},a.c);if(dk)Object.assign(c,{bg:c.dbg,sheet:c.dsheet,line:c.dline,line2:c.dline2,tint:c.dtint,soft:c.dsoft,acc:c.dacc,a2c:c.dacc,ink:'#E8ECEF',muted:'#9EA9B3',shadow:'0 0 0 1px '+c.dline});return Object.entries(c).map(([k,v])=>'--'+k+':'+v).join(';')}
+function app(a,mode){
+  const ph=mode!=='pc', dk=mode==='dk', st=mode==='st';
+  const groups=a.groups.map((g,i)=>{const [n,c]=g;let cl='g';if(i===0)cl+=' on';if(i===2&&!ph)cl+=' hv';if(i===a.sep)cl+=' sep';return `<span class="${cl}">${n}<small>${c}</small></span>`}).join('');
+  const subs=a.subs.map((s,i)=>`<span class="sb${i===0?' on':''}"><em>${String(i+1).padStart(2,'0')}</em>${s}</span>`).join('');
+  const tips=(ph?a.tips.slice(0,2):a.tips).map(t=>`<li>${t}</li>`).join('');
+  const menu=`<div class="mb"><div class="gw"><span class="arr off">‹</span><div class="gr">${groups}</div><span class="arr">›</span></div><div class="subs">${subs}</div><div class="si">${a.sinfo}</div></div>`;
+  const head=`<div class="hd"><span class="eb">${a.eb}</span><h3 class="ttl">${a.title}</h3><span class="tag">${a.tag}</span><div class="stats">${a.stats.map(s=>`<span><b>${s[0]}</b>${s[1]}</span>`).join('')}</div>${a.art}</div>`;
+  const srch=`<div class="srch">${ICON_S}${a.ph}</div>`;
+  const ents=a.ents.map(e=>`<div class="ent"><span class="n">${e[0]}</span><span class="spk">${ICON_P}</span><span class="r">${e[1]}</span><span class="k">${e[2]}</span></div>`).join('');
+  const sheet=`<div class="sheet"><div class="band"><div class="big">${a.bt}</div><div class="br"><div><p class="intro">${a.intro}</p>${ph?'':`<ul class="tips">${tips}</ul>`}</div><div class="pic">${a.pic}</div>${ph?`<ul class="tips">${tips}</ul>`:''}</div></div>
+   <div class="ctl"><div class="seg"><span class="on">예문보기</span><span>단어공부</span><span>확인퀴즈</span></div>${ph?'':'<span class="pl">반복 2회 ▾</span><span class="pl">x 1.0 ▾</span>'}</div><div class="cards">${ents}</div></div>`;
+  const cls='app'+(ph?' ph':'')+(dk?' dk':'')+(st?' st':'');
+  if(st) return `<div class="${cls}" style="${vars(a)}"><div class="stick">${menu}</div>${sheet}${sheet}</div>`;
+  return `<div class="${cls}" style="${vars(a,dk)}">${head}${srch}${menu}${sheet}</div>`;
+}
+const jump=document.getElementById('jump'), secs=document.getElementById('secs');
+secs.style.cssText='display:flex;flex-direction:column;gap:44px';
+D.forEach(a=>{
+  jump.insertAdjacentHTML('beforeend',`<a href="#${a.id}"><i style="background:radial-gradient(120% 150% at 0% 0%,${a.c.T1},${a.c.T2} 48%,${a.c.T3})"></i>${a.ko}</a>`);
+  const sw=a.sw.map(([n,h])=>`<span><b style="background:${h}"></b>${n}</span>`).join('');
+  secs.insertAdjacentHTML('beforeend',`<section class="sec" id="${a.id}">
+   <div class="sechd"><div><h2>${a.ko}<small>${a.pal}</small></h2><p>${a.concept}</p></div><div class="sw">${sw}</div></div>
+   <div><p class="lbl">PC · 라이트</p><div class="browser"><div class="bar"><i></i><i></i><i></i><span>insoo-commits.github.io/${a.repo}/</span></div><div class="pcwrap"><div class="pcin">${app(a,'pc')}</div></div></div></div>
+   <div class="phones">
+     <div><p class="lbl">휴대폰 · 라이트</p><div class="phone"><div class="scr">${app(a,'lt')}</div></div></div>
+     <div><p class="lbl">휴대폰 · 다크</p><div class="phone"><div class="scr">${app(a,'dk')}</div></div></div>
+     <div><p class="lbl">휴대폰 · 스크롤했을 때</p><div class="phone"><div class="scr">${app(a,'st')}<span class="stnote">메뉴가 위에 붙어요</span></div></div></div>
+   </div></section>`);
+});
+function fit(){document.querySelectorAll('.pcwrap').forEach(w=>{const i=w.firstElementChild;const s=w.clientWidth/1040;i.style.transform=`scale(${s})`;w.style.height=(i.offsetHeight*s)+'px'})}
+fit();addEventListener('resize',fit);if(document.fonts)document.fonts.ready.then(fit);
+if('ResizeObserver' in window)new ResizeObserver(fit).observe(document.querySelector('.page'));
+</script>
