@@ -1,0 +1,51 @@
+
+/* 글자(P6)·문법(P7) 대분류 colours */
+:root{--p6:#1E7470;--p6-soft:#E0F1F0;--p7:#A24F28;--p7-soft:#F7E8DF}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--p6:#6FCFC9;--p6-soft:#17302F;--p7:#F0A27A;--p7-soft:#3A241A}}
+:root[data-theme="dark"]{--p6:#6FCFC9;--p6-soft:#17302F;--p7:#F0A27A;--p7-soft:#3A241A}
+[data-g="P6"]{--accent:var(--p6);--accent-soft:var(--p6-soft)}
+[data-g="P7"]{--accent:var(--p7);--accent-soft:var(--p7-soft)}
+/* Thai v1.1 RYU: reading on the card front */.face .frd{display:block;margin:2px 0 4px}
+/* 태국 탭 (P8) info pages, same look as the Lao app's 라오스 tab */
+:root{--p8:#1F4E8C;--p8-soft:#E2EAF5}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--p8:#8DB4E8;--p8-soft:#172538}}
+:root[data-theme="dark"]{--p8:#8DB4E8;--p8-soft:#172538}
+[data-g="P8"]{--accent:var(--p8);--accent-soft:var(--p8-soft)}
+.info{padding:6px 4px 12px;font-size:15.5px;line-height:1.65;color:var(--ink)}
+.info h2{font-size:21px;margin:4px 0 0;line-height:1.3}
+.info .sub2{color:var(--muted);font-size:14px;margin-bottom:14px}
+.info figure{margin:0 0 14px;text-align:center}
+.info figure svg.flag,.info figure img{display:block;width:100%;max-width:420px;height:auto;margin:0 auto;border-radius:8px;box-shadow:0 1px 6px rgba(0,0,0,.18)}
+.info figure img{background:var(--line)}
+.info figcaption{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.5}
+.info figcaption small{display:block;font-size:11px;opacity:.85}
+.info .facts{width:100%;border-collapse:collapse;margin:2px 0 14px;font-size:14.5px}
+.info .facts th{width:31%;text-align:left;font-weight:700;color:var(--accent);padding:7px 6px;vertical-align:top;border-bottom:1px solid var(--line)}
+.info .facts td{padding:7px 6px;border-bottom:1px solid var(--line)}
+.info h3{font-size:16.5px;margin:18px 0 6px;padding-left:9px;border-left:4px solid var(--accent);line-height:1.35}
+.info p{margin:0 0 8px}
+.info .lo{font-family:var(--lao)}
+.info .r{color:var(--accent)}
+.info .clr{display:flex;flex-direction:column;gap:7px;margin:6px 0 10px}
+.info .clr div{display:flex;gap:10px;align-items:flex-start}
+.info .clr i{flex:none;width:22px;height:22px;border-radius:5px;margin-top:2px;border:1px solid var(--line)}
+.info .terms{background:var(--accent-soft);border-radius:12px;padding:8px 14px;margin:8px 0 14px}
+.info .terms div{padding:5px 0;border-bottom:1px dashed var(--line)}.info .terms div:last-child{border:0}
+.info .terms .lo{font-size:17px;font-weight:700}.info .terms .r{margin:0 8px 0 6px}
+@media (min-width:860px){.info{padding:8px 14px 14px}.info .top2{display:grid;grid-template-columns:44% 1fr;gap:28px;align-items:start}.info .two{display:grid;grid-template-columns:1fr 1fr;gap:32px}.info .facts th{width:28%}}
+/* Thai v1.9 (Lao v2.80): phone shows only the 한국어 말하기 checkbox from the key line */
+html:not(.tab) .kbinfo{display:flex;justify-content:flex-end;font-size:12.5px!important}html:not(.tab) .kbinfo>span{display:none}html:not(.tab) .kbinfo label{color:var(--ink);-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+@media (hover:hover) and (pointer:fine){html:not(.tab) .kbinfo{justify-content:center;font-size:11.5px!important}html:not(.tab) .kbinfo>span{display:inline-flex}html:not(.tab) .kbinfo label{color:var(--muted)}}
+/* Thai v1.9 (Lao v2.84): small middle dot between main menu tabs */
+.group+.group::before{content:"·";position:absolute;left:-9px;top:50%;transform:translate(-50%,-55%);color:var(--muted);opacity:.55;font-weight:700;pointer-events:none}
+/* Thai v1.10 (Lao v2.98-2.99): menu in its own box (PC padding = content box), small side gutters on phones */
+.menubox{background:var(--sheet);border:1px solid var(--line);border-radius:16px;padding:12px 20px 10px;display:flex;flex-direction:column;gap:10px;min-width:0}html.pre .menubox{display:none!important}.menubox .groups{padding-left:0!important;padding-right:0!important}@media (max-width:640px){.wrap{padding-left:max(6px,env(safe-area-inset-left,0px))!important;padding-right:max(6px,env(safe-area-inset-right,0px))!important}.menubox{padding:8px 8px 6px;border-radius:12px}.sheet{border-radius:12px}.sheet>.band,.sheet>.controls,.sheet>.body{padding-left:8px!important;padding-right:8px!important}.sheet .entry{margin-left:-8px!important;margin-right:-8px!important;padding-left:8px!important;padding-right:8px!important}}
+/* v1.11 도움말 탭 (PH), same as the Lao app v3.04 */
+:root{--ph:#5E6E1F;--ph-soft:#EEF1DD}@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--ph:#BFD07A;--ph-soft:#2A2F17}}:root[data-theme="dark"]{--ph:#BFD07A;--ph-soft:#2A2F17}[data-g="PH"]{--accent:var(--ph);--accent-soft:var(--ph-soft)}.info .kbnote{display:none;color:var(--muted)}@media (hover:none) and (pointer:coarse){html:not(.tab) .info .kbnote{display:block}html:not(.tab) .info .kbnote~*{display:none}}.info table.facts kbd.kc{display:inline-block}
+/* v1.15 RYU: phone: 한국어 말하기 · 연속 재생 · 묶음 재생 on one centred line (v1.16) */
+@media (max-width:640px){.controls{flex-wrap:wrap}.controls::after{content:"";order:2;flex-basis:100%;height:0}.controls>.seg,.controls>.opts{order:1}.controls>.kbinfo{order:3;flex:0 0 auto;width:auto;margin:0 0 0 auto;align-self:center}.controls>.bact{order:4;flex:0 0 auto;width:auto;margin:0 auto 0 0;padding-left:10px}}
+@media (max-width:359px){.controls>.kbinfo,.controls>.bact{margin:0 auto}.controls>.bact{padding-left:0}}
+
+/* v1.18 RYU: 태국 탭 (Lao v3.18) - 줄간격 줄이고 내용별 상자 */.info{line-height:1.5;font-size:15px}.info .sub2{margin-bottom:8px}.info h3{margin:10px 0 4px;font-size:15.5px}.info p{margin:0 0 4px}.info figure{margin:0 0 8px}.info figcaption{margin-top:3px;line-height:1.35}.info .facts{margin:0 0 8px;font-size:14px}.info .facts th,.info .facts td{padding:4px 6px}.info .terms{padding:4px 12px;margin:6px 0 8px}.info .terms div{padding:3px 0}.info .terms .lo{font-size:16px}.info .two{display:grid;gap:8px;margin-top:8px}.info .two>div{border:1px solid var(--line);border-radius:12px;padding:2px 12px 8px;background:var(--sheet)}.info .two>div>h3:first-child{margin-top:8px}.info .top2,.info .top1{margin-bottom:4px}.info .cards{display:grid;grid-template-columns:1fr;gap:8px;margin:8px 0}.info .card{border:1px solid var(--line);border-radius:12px;padding:8px 12px;background:var(--sheet)}.info .card h4{margin:0 0 4px;font-size:15px;color:var(--accent);padding-bottom:3px;border-bottom:1px dashed var(--line)}.info .card ul,.info .card ol{margin:0;padding-left:1.15em}.info .card li{margin:1px 0}.info .card .facts{margin:0}.info .note{background:var(--accent-soft);border-radius:10px;padding:6px 12px;font-size:14px;margin:8px 0}.info .warn{border-left:4px solid #c0392b;background:rgba(192,57,43,.08);border-radius:6px;padding:6px 12px;font-size:14px;margin:8px 0}.info ol.steps{counter-reset:st;list-style:none;padding:0;margin:6px 0 8px}.info ol.steps li{counter-increment:st;position:relative;padding:3px 0 3px 30px}.info ol.steps li::before{content:counter(st);position:absolute;left:0;top:3px;width:21px;height:21px;border-radius:50%;background:var(--accent);color:var(--sheet);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}.info .phr{border:1.5px solid var(--accent);border-radius:12px;padding:4px 12px;margin:8px 0}.info .phr .ph-t{font-size:13px;font-weight:700;color:var(--accent);padding:2px 0}.info .phr>div:not(.ph-t){padding:3px 0;border-top:1px dashed var(--line)}.info .phr .lo{font-size:16px;font-weight:700}.info .phr .r{margin:0 8px 0 6px}.info .phr .m{color:var(--muted)}.info .asof{font-size:12.5px;color:var(--muted);margin-top:8px}.info .rph figure img{max-width:360px}.info .rph+.rph{margin-top:4px}.info .gal{margin:10px 0 4px}.info .gal-t{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:4px}.info .gal-g{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.info .gal figure{margin:0}.info .gal figure img{width:100%;height:84px;object-fit:cover;border-radius:6px;box-shadow:none;max-width:none}.info .gal figcaption{font-size:11.5px;margin-top:2px}.info figure img{cursor:zoom-in}@media (min-width:860px){.info .two{grid-template-columns:1fr 1fr;gap:12px}.info .cards{grid-template-columns:1fr 1fr;gap:10px}.info .gal-g{grid-template-columns:repeat(5,1fr)}.info .gal figure img{height:110px}.info .top2{gap:20px}}
+/* v1.18 RYU: 태국 탭 더 알아보기 */.info h3.more{margin-top:18px;padding-top:12px;border-top:1px dashed var(--line,#ccc)}
+/* v1.21 RYU (Lao v3.27): 메뉴 구분선 | (기초회화 앞, 태국 앞, 도움말 앞·뒤) */.group[data-g="P8"]::before,.group[data-g="PH"]::before{content:"|"!important;font-weight:400!important;opacity:.7!important;transform:translate(-50%,-52%)!important}.groups::before,.groups::after{content:"|";flex:0 0 auto;align-self:center;color:var(--muted);opacity:.7;font-size:20px;line-height:1;transform:translateY(-2px)}.groups::before{margin-right:-14px;transform:translate(-2px,-2px)}.groups::after{margin-left:-12px}
